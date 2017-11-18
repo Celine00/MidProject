@@ -1,10 +1,12 @@
 package strongestgirls.midproject;
 
+import java.io.Serializable;
+
 /**
  * Created by Crystal on 2017/11/16.
  */
 
-public class Hero {
+public class Hero implements Serializable {
     private String first_letter;
     private String name;
     private String sex;

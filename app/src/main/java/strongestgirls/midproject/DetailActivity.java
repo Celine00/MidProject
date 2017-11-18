@@ -1,6 +1,7 @@
 package strongestgirls.midproject;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 public class DetailActivity extends AppCompatActivity {
     private ImageView hero_img;
     private EditText[] editTexts;
+    private Hero theHero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,22 @@ public class DetailActivity extends AppCompatActivity {
         editTexts[1] = (EditText)findViewById(R.id.power);  //势力
         editTexts[2] = (EditText)findViewById(R.id.sex);    //性别
         editTexts[3] = (EditText)findViewById(R.id.date);   //生卒年
-        editTexts[4] = (EditText)findViewById(R.id.name2);  //字
+        //生年跟卒年分开？
+        editTexts[4] = (EditText)findViewById(R.id.name2);  //字--没有字这个属性？？
         editTexts[5] = (EditText)findViewById(R.id.place);  //籍贯
         editTexts[6] = (EditText)findViewById(R.id.event);  //事迹
 
-        //intent接收从主界面传送的数据
+        Intent it = this.getIntent();
+        theHero = (Hero) it.getSerializableExtra("Hero");
+        editTexts[0].setText(theHero.getName());
+        editTexts[1].setText(theHero.getPower());
+        editTexts[2].setText(theHero.getSex());
+        editTexts[3].setText(theHero.getBirth_year());
+        editTexts[4].setText(theHero.getDeath_year());
+        editTexts[5].setText(theHero.getPlace());
+        editTexts[6].setText(theHero.getEvent());
+        hero_img.setImageResource(theHero.getProfile());
+
 
     }
 
